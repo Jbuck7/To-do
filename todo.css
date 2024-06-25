@@ -1,0 +1,154 @@
+:root {
+    --color-black: #000;
+    --color-grey-100: #ccc;
+    --color-grey-200: #888;
+    --color-grey-300: #555;
+    --color-grey-400: #222;
+    --color-white: #fff;
+    --color-ivory: #faf7dc;
+    --color-ocher: #cbb687;
+    --color-light-ocher: #e5dcb7;
+    --color-mid-ocher: #b99f65;
+    --color-dark-ocher: #756950;
+    --color-light-green: #49d59c;
+    --color-green: #1f5d50;
+    --color-dark-green: #18473d;
+    --color-brown: #2c2422;
+
+    --font-body: "Lora", serif;
+    --font-heading: the_wild_breath_of_zeldaRg, serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 500;
+    --font-weight-lora-medium: 500;
+    font-size: 100%;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+
+
+
+@font-face {
+    font-family: 'the_wild_breath_of_zeldaRg';
+    src: url('assets/fonts/the_wild_breath_of_zelda-webfont.woff2') format('woff2'),
+         url('assets/fonts/the_wild_breath_of_zelda-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body {
+    background-color: var(--color-ivory);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+  }
+
+  @media (min-aspect-ratio: 1/1) {
+    body {
+      max-width: 640px; /* or any other value */
+      margin: 20px auto; /* add margins on the sides */
+    }
+  }
+.heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 5px solid var(--color-dark-green);
+    background-color: var(--color-green);
+    border-radius: 10px;
+    box-sizing: border-box;
+
+    
+}
+.header-left{
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+.header-right{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+.add{
+    background-color: var(--color-mid-ocher);
+    border: 3px solid var(--color-dark-ocher);
+    border-radius: 10px;
+    padding: 5px 50px;
+    height:fit-content ;
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    color: var(--color-dark-ocher);
+    
+}
+.add:hover{
+    background-color: var(--color-dark-ocher);
+    color: var(--color-mid-ocher);
+    border-color: var(--color-mid-ocher);
+}
+.title{
+    font-size: 2em;
+    font-family: var(--font-heading);
+    color: var(--color-grey-400);
+    text-align: center;
+}
+
+
+.menu-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+
+    background-color: var(--color-ivory);
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.5s;
+    padding: 10px;
+
+}
+.menu-button{
+ 
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-mid-ocher);
+    border: 3px solid var(--color-dark-ocher);
+    margin-top: 10px;
+
+
+}
+.menu-button-img{
+    flex: 1;
+    max-width: 80%; 
+    max-height: 80%; 
+    object-fit: contain;
+    filter: invert(44%) sepia(4%) saturate(2578%) hue-rotate(2deg) brightness(91%) contrast(89%);
+    
+}
+.menu-button:hover{
+    background-color: var(--color-dark-ocher);
+    border: 3px solid var(--color-mid-ocher);
+}
+.menu-button:hover .menu-button-img{
+    filter: invert(68%) sepia(32%) saturate(471%) hue-rotate(3deg) brightness(88%) contrast(89%);    
+}
+.menu-hidden-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.visible{
+    display: none;
+}
+
+  
+
+
+
