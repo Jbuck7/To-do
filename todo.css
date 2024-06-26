@@ -59,6 +59,7 @@ body {
     border-radius: 10px;
     box-sizing: border-box;
 
+
     
 }
 .header-left{
@@ -71,7 +72,7 @@ body {
     display: flex;
     justify-content: flex-end;
 }
-.add{
+.header-button{
     background-color: var(--color-mid-ocher);
     border: 3px solid var(--color-dark-ocher);
     border-radius: 10px;
@@ -82,7 +83,7 @@ body {
     color: var(--color-dark-ocher);
     
 }
-.add:hover{
+.header-button:hover{
     background-color: var(--color-dark-ocher);
     color: var(--color-mid-ocher);
     border-color: var(--color-mid-ocher);
@@ -106,7 +107,6 @@ body {
 
     background-color: var(--color-ivory);
     z-index: 1;
-    overflow: hidden;
     transition: 0.5s;
     padding: 10px;
 
@@ -118,9 +118,18 @@ body {
     height: 50px;
     background-color: var(--color-mid-ocher);
     border: 3px solid var(--color-dark-ocher);
-    margin-top: 10px;
+    z-index: 2;
+    margin: 5px;
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    color: var(--color-dark-ocher);
 
 
+}
+.menu-button:hover{
+    background-color: var(--color-dark-ocher);
+    border: 3px solid var(--color-mid-ocher);
+    color: var(--color-mid-ocher);
 }
 .menu-button-img{
     flex: 1;
@@ -130,24 +139,138 @@ body {
     filter: invert(44%) sepia(4%) saturate(2578%) hue-rotate(2deg) brightness(91%) contrast(89%);
     
 }
-.menu-button:hover{
-    background-color: var(--color-dark-ocher);
-    border: 3px solid var(--color-mid-ocher);
-}
+
 .menu-button:hover .menu-button-img{
     filter: invert(68%) sepia(32%) saturate(471%) hue-rotate(3deg) brightness(88%) contrast(89%);    
 }
-.menu-hidden-buttons{
+.menu-hidden-button-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+    position: relative;
+
 }
-.visible{
-    display: none;
+.hidden-button{
+    position: relative;
+    top: calc(var(--index)*60px);
+    transition: 0.25s;
+    opacity: 1;
+    pointer-events: none;
 }
 
+.visible-button{
+    position: relative;
+    top: 0px;
+    transition: 0.25s;
+    opacity: 1;
+    pointer-events: all;
+
+}
+.nth-child-1{
+--index: 1;
+}
+.nth-child-2{
+--index: 2;
+}
+
+
+.task-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    border: 5px solid var(--color-dark-ocher);
+    background-color: var(--color-mid-ocher);
+    margin: 10px;
+}
+
+.popup-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+.popup{
+    background-color: var(--color-ivory);
+    border: 5px solid var(--color-dark-ocher);
+    border-radius: 10px;
+    display: flex;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    align-items: top;
+}
+.popup-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-green);
+    border-radius: 5px;
+}
+.popup-body{
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    justify-content: center;
+    padding: 10px;
+}
+.popup-left{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: top;
+    height: 100%;
+    gap: 5px;    
+}
+.popup-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+    gap: 5px;
+}
+.input{
+    border: 3px solid var(--color-dark-ocher);
+    border-radius: 10px;
+    padding: 5px;
+    font-family: var(--font-heading);
+    font-size: 1.5em;
+    color: var(--color-dark-ocher);
+    
+}
+.input-description{
+
+    width: 300px;
+    height: 150px;
+    vertical-align: top;
+    padding-top: 0;
+}
+
+.popup-footer{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    width: 100%;
+    justify-content: center;
+}
   
 
 

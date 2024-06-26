@@ -10,14 +10,15 @@
   <body>
     <div class="heading">
       <div class="header-left"><h1 class="title">TO-DO:</h1></div>
-      <div class="header-right"><button class="add">ADD</button></div>
+      <div class="header-right">
+        <button id="add-button" class="header-button">ADD</button>
+      </div>
     </div>
 
     <div class="menu-container">
-      <div class="menu-hidden-buttons">
-        <button class="hidden-button menu-button visible">G</button>
-        <button class="hidden-button menu-button visible">S</button>
-      </div>
+      <button class="hidden-button menu-button nth-child-2">G</button>
+      <button class="hidden-button menu-button nth-child-1">S</button>
+
       <button class="menu-button main-menu-button">
         <img
           class="menu-button-img"
@@ -25,6 +26,41 @@
           alt=""
         />
       </button>
+    </div>
+
+    <div class="task-list">
+      <!-- <span class="empty-list-text">All caught up!</span> -->
+      <div class="task"></div>
+    </div>
+    <div class="popup-bg">
+      <div class="popup">
+        <div class="popup-header">
+          <h2>ADD ITEM</h2>
+          <button class="close-button menu-button">X</button>
+        </div>
+        <div class="popup-body">
+          <div class="popup-left">
+            <input type="text" class="input-title input" placeholder="Title" />
+            <textarea
+              class="input-description input"
+              placeholder="Description"
+            ></textarea>
+          </div>
+          <div class="popup-right">
+            <input type="date" class="input-date input" />
+            <input type="time" class="input-time input" />
+            <select id="myDropdown" class="input-priority input">
+              <option disabled selected value="">PRIORITY</option>
+              <option value="2">NORMAL</option>
+              <option value="1">URGENT</option>
+              <option value="3">FLEXIBLE</option>
+            </select>
+            <div class="popup-footer">
+              <button class="header-button">ADD</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="todo.js" defer></script>
