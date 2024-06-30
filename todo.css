@@ -3,7 +3,7 @@
     --color-grey-100: #ccc;
     --color-grey-200: #888;
     --color-grey-300: #555;
-    --color-grey-400: #222;
+    --color-grey-400: #1a1a1a;
     --color-white: #fff;
     --color-ivory: #faf7dc;
     --color-ocher: #cbb687;
@@ -11,7 +11,9 @@
     --color-mid-ocher: #b99f65;
     --color-dark-ocher: #756950;
     --color-light-green: #49d59c;
-    --color-green: #1f5d50;
+    /* --color-green: #1f5d50; */
+    --color-green: #216444;
+
     --color-dark-green: #18473d;
     --color-brown: #2c2422;
 
@@ -81,6 +83,7 @@ body {
     font-family: var(--font-heading);
     font-size: 1.5em;
     color: var(--color-dark-ocher);
+    margin: 10px;
     
 }
 .header-button:hover{
@@ -93,6 +96,7 @@ body {
     font-family: var(--font-heading);
     color: var(--color-grey-400);
     text-align: center;
+    margin-left: 10px;
 }
 
 
@@ -175,17 +179,6 @@ body {
 }
 
 
-.task-list{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    border-radius: 10px;
-    border: 5px solid var(--color-dark-ocher);
-    background-color: var(--color-mid-ocher);
-    margin: 10px;
-}
 
 .popup-bg{
     position: fixed;
@@ -271,6 +264,92 @@ body {
     width: 100%;
     justify-content: center;
 }
+
+.task-list{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    border-radius: 5px;
+    border: 5px solid var(--color-dark-ocher);
+    background-color: var(--color-mid-ocher);
+    margin: 10px;
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    border-radius:10px;
+    border: 5px solid var(--color-dark-ocher);
+    background-color: var(--color-mid-ocher);
+}
+  
+.task-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    background-color: var(--color-green);
+    border-radius: 5px;
+
+}
+  
+.task-title {
+    font-size: 2em;
+    font-family: var(--font-heading);
+    color: var(--color-grey-400);
+    text-align: left;
+    padding-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 70%;
+}
+.task-description {
+    font-size: 1em;
+    font-family: var(--font-body);
+    color: var(--color-brown);
+    text-align: center;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 50%;
+}
+.expanded {
+    overflow-wrap: break-word;
+    white-space: normal;
+    height: fit-content;
+} 
+
+.task-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    justify-content: space-between;
+}
+.task-body>* {
+    margin: 10px;
+}
+
+  
+.task-countdown {
+    font-size: 1.2em;
+    font-family: var(--font-heading);
+    color: var(--color-grey-400);
+    padding-right: 10px;
+}
+  
+
+  
+
   
 
 

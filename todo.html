@@ -29,8 +29,19 @@
     </div>
 
     <div class="task-list">
-      <!-- <span class="empty-list-text">All caught up!</span> -->
-      <div class="task"></div>
+      <template id="task-template">
+        <div class="task">
+          <div class="task-header">
+            <h3 class="task-title">Title</h3>
+
+            <span class="task-countdown"></span>
+          </div>
+          <div class="task-body">
+            <p class="task-description">Description</p>
+            <button class="task-complete-button header-button">COMPLETE</button>
+          </div>
+        </div>
+      </template>
     </div>
     <div class="popup-bg">
       <div class="popup">
@@ -56,7 +67,7 @@
               <option value="3">FLEXIBLE</option>
             </select>
             <div class="popup-footer">
-              <button class="header-button">ADD</button>
+              <button class="header-button add-item-button">ADD</button>
             </div>
           </div>
         </div>
