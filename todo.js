@@ -10,11 +10,18 @@ const dateInput = document.querySelector('.input-date');
 const timeInput = document.querySelector('.input-time');
 const prioritySelect = document.querySelector('.input-priority');
 
-const taskTemplate = document.querySelector('.task-list template');
+const taskTemplate = document.querySelector('#task-template');
 const addItemButton = document.querySelector('.add-item-button');
 const taskList = document.querySelector('.task-list');
 
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+console.log(tasks);
+tasks.forEach(task => {
+  task.element = addTask(task.task);
+  task.countdown = task.element.querySelector('.task-countdown');
+  taskList.appendChild(task.element);
+  updateCountdown(task);
+});
 
 class Task {
   constructor(title, description,due_date_time,priority) {
@@ -36,7 +43,7 @@ addItemButton.addEventListener('click', () => {
   }).format(new Date());  
   const dueTime = timeInput.value || "23:59"; // use midnight if empty 
 
-  const dueDateTime = new Date(`${dueDate}T${dueTime}`);
+  const dueDateTime = new Date(`${dueDate}T${dueTime}`).getTime();  
   const priority = prioritySelect.value;
 
   titleInput.value = '';
@@ -46,34 +53,53 @@ addItemButton.addEventListener('click', () => {
   prioritySelect.value = '';
 
   const task = new Task(title, description, dueDateTime, priority);
-
-  // Now you can use the task instance
   popup.style.display = 'none';
+
+  const taskElement = addTask(task);
+  const taskCountdown = taskElement.querySelector('.task-countdown');
+  taskList.appendChild(taskElement);
+  tasks.push({ task: task, element:taskElement, countdown:taskCountdown  });
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  console.log(tasks);
+
+});
+
+
+function addTask(task) {
+  console.log("addTask");
+  // Now you can use the task instance
   const taskElement = taskTemplate.content.cloneNode(true);
   const taskTitle = taskElement.querySelector('.task-title');
-  taskTitle.textContent = title;
+  const taskHeader = taskElement.querySelector('.task-header');
   const taskDescription = taskElement.querySelector('.task-description'); 
-  taskDescription.textContent= description;
+  taskTitle.textContent = task.title;
+  taskDescription.textContent= task.description;
+
   taskElement.querySelector('.task').addEventListener('click', () => {
     taskDescription.classList.toggle('expanded');
     taskTitle.classList.toggle('expanded');
-    taskElement.querySelector('.task-header').classList.toggle('expanded');
+    taskHeader.classList.toggle('expanded');
   });
 
   taskElement.querySelector('.task-complete-button').addEventListener('click', (event) => {
     const taskElement = event.target.closest('.task'); // Get the parent task element
-    const taskIndex = tasks.indexOf(tasks.find((task) => task.element.contains(taskElement)));    
+    const taskIndex = tasks.indexOf(tasks.find(task => task.element === taskElement));
     
-      tasks.splice(taskIndex, 1);
+    tasks.splice(taskIndex, 1); // Remove the task from the tasks array
       taskElement.parentNode.removeChild(taskElement); // Remove the HTML element
-
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    console.log(tasks);
   });
-  tasks.push({ task: task, element:taskElement, countdown: taskElement.querySelector('.task-countdown') });
-  updateCountdown(tasks[tasks.length - 1]);
-  taskList.appendChild(taskElement);
+  
+
+  return taskElement;
+}
 
 
-});
+
+
+
+
 
 // Update the countdowns every second
 setInterval(() => {
@@ -83,9 +109,9 @@ setInterval(() => {
 }, 1000);
 
 function updateCountdown(task) {
+  
   const dueDateTime = task.task.due_date_time;
   const countdownElement = task.countdown;
-
   const now = new Date();
   const diff = dueDateTime - now;
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
